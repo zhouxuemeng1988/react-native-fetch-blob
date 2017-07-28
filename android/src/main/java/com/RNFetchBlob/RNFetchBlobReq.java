@@ -497,6 +497,8 @@ public class RNFetchBlobReq extends BroadcastReceiver implements Runnable {
                     resp.body().bytes();
                 } catch (Exception ignored) {
 //                    ignored.printStackTrace();
+                } catch (Error ignored) {
+//                    ignored.printStackTrace();
                 }
                 try {
                     this.destPath = this.destPath.replace("?append=true", "");
