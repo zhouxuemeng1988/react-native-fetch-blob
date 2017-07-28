@@ -498,8 +498,14 @@ public class RNFetchBlobReq extends BroadcastReceiver implements Runnable {
                 } catch (Exception ignored) {
 //                    ignored.printStackTrace();
                 }
-                this.destPath = this.destPath.replace("?append=true", "");
-                callback.invoke(null, RNFetchBlobConst.RNFB_RESPONSE_PATH, this.destPath);
+                try {
+                    this.destPath = this.destPath.replace("?append=true", "");
+                    callback.invoke(null, RNFetchBlobConst.RNFB_RESPONSE_PATH, this.destPath);
+                } catch (Exception ignored) {
+                       callback.invoke("RNFetchBlob failed to encode response data to Exception.", null);
+                } catch (Error ignored) {
+                       callback.invoke("RNFetchBlob failed to encode response data to Error.", null);
+                }
                 break;
             default:
                 try {

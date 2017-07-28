@@ -96,6 +96,8 @@ public class RNFetchBlobFileResp extends ResponseBody {
                 return read;
             } catch(Exception ex) {
                 return -1;
+            } catch (Error error) {
+                return -1;
             }
         }
 
